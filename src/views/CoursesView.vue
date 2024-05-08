@@ -19,10 +19,15 @@
 
     <v-dialog v-model="dialog" persistent max-width="800px">
       <v-card>
-        <v-card-title class="headline">Review</v-card-title>
+        <v-card-title class="headline">Code Review</v-card-title>
         <v-card-text>
-          <p v-for="(comment, index) in grade.comments.split('\\n')" :key="index">{{ comment }}</p>
-          <p>Grade: {{ grade.grade }}/5</p>
+          <div v-for="(comment, index) in grade.comments.split('\\n')"
+    :key="index" class="review-comment">
+            {{ comment }}
+          </div>
+          <div class="grade-display">
+            Grade: {{ grade.grade }}/5
+          </div>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -229,5 +234,31 @@ export default {
 
 h2 {
   margin-top: 30px; 
+}
+
+.review-comment {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #6560602f;
+  border-left: 5px solid #2e7d32;
+  font-size: 1.1rem; }
+
+.grade-display {
+  margin-top: 20px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+.v-dialog .v-card {
+  background-color: #ffffff;
+}
+
+.v-btn {
+  transition: background-color 0.3s;
+}
+
+.v-btn:hover {
+  background-color: #023004;
 }
 </style>
